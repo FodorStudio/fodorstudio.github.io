@@ -111,4 +111,95 @@
       background: rgba(255, 255, 255, 0.6);
       padding: 1rem;
       margin-bottom: 1rem;
-      border
+      border-left: 4px solid #00bcd4;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      font-weight: 500;
+    }
+
+    .contact p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    .contact a {
+      color: #00bcd4;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Fodor Studio</h1>
+      <p>Drone Videography for Real Estate</p>
+    </header>
+
+    <div class="tabs">
+      <div class="tab active" data-tab="gallery">Gallery</div>
+      <div class="tab" data-tab="services">Services</div>
+      <div class="tab" data-tab="contact">Contact</div>
+    </div>
+
+    <section id="gallery" class="tab-content active">
+      <div class="gallery">
+        <img src="https://via.placeholder.com/400x250?text=Drone+Shot+1" alt="Drone Shot 1" />
+        <img src="https://via.placeholder.com/400x250?text=Drone+Shot+2" alt="Drone Shot 2" />
+        <img src="https://via.placeholder.com/400x250?text=Drone+Shot+3" alt="Drone Shot 3" />
+        <img src="https://via.placeholder.com/400x250?text=Drone+Shot+4" alt="Drone Shot 4" />
+      </div>
+    </section>
+
+    <section id="services" class="tab-content">
+      <div class="services">
+        <ul>
+          <li>Aerial Drone Photography & Videography</li>
+          <li>Real Estate Property Showcases</li>
+          <li>Editing & Post-Production</li>
+          <li>Custom Video Packages</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="tab-content">
+      <div class="contact">
+        <p>Email: <a href="mailto:fodor.studio.co@gmail.com">fodor.studio.co@gmail.com</a></p>
+        <p>Instagram: <a href="https://instagram.com/fodorstudio" target="_blank">@fodorstudio</a></p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 Fodor Studio</p>
+    </footer>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
