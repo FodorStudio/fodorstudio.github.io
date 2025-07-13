@@ -1,42 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fodor Studio</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
-      background: #f4f4f4;
-      color: #333;
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
+
+    /* Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    header {
-      background: #222;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
       color: #fff;
-      padding: 2rem 1rem;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      max-width: 900px;
+      width: 100%;
+      padding: 2rem;
+    }
+
+    header {
       text-align: center;
+      margin-bottom: 2rem;
     }
     header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+      font-weight: 600;
+      font-size: 3rem;
+      letter-spacing: 2px;
+      text-shadow: 0 0 5px rgba(255,255,255,0.6);
     }
     header p {
-      margin: 0.5rem 0 0;
-      font-style: italic;
       font-weight: 300;
+      font-size: 1.25rem;
+      margin-top: 0.5rem;
+      color: #e0e0e0;
+      font-style: italic;
     }
-    section {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid rgba(255,255,255,0.2);
     }
-    h2 {
-      border-bottom: 2px solid #222;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
+    .tab {
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
       font-weight: 600;
+      color: #ccc;
+      transition: color 0.3s ease;
+      border-bottom: 3px solid transparent;
+      user-select: none;
     }
+    .tab:hover {
+      color: #fff;
+    }
+    .tab.active {
+      color: #fff;
+      border-bottom: 3px solid #00bcd4;
+    }
+
+    /* Content Sections */
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+    }
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Gallery Grid */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
@@ -44,74 +94,128 @@
     }
     .gallery img {
       width: 100%;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      object-fit: cover;
+      height: 150px;
     }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Services List */
     .services ul {
       list-style: none;
-      padding: 0;
+      padding-left: 1rem;
+      color: #ddd;
     }
     .services li {
-      background: #fff;
-      margin-bottom: 0.75rem;
-      padding: 1rem;
-      border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+      padding-left: 1rem;
+      border-left: 4px solid #00bcd4;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+
+    /* Contact */
+    .contact p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
     }
     .contact a {
-      color: #222;
+      color: #00bcd4;
       text-decoration: none;
       font-weight: 600;
     }
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      padding: 1rem;
-      background: #222;
-      color: #fff;
-      margin-top: 4rem;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #bbb;
+      user-select: none;
     }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    /* Responsive */
     @media (max-width: 600px) {
       header h1 {
         font-size: 2rem;
+      }
+      .gallery img {
+        height: 120px;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Fodor Studio</h1>
-    <p>Drone Videography for Real Estate</p>
-  </header>
+  <div class="container">
+    <header>
+      <h1>Fodor Studio</h1>
+      <p>Drone Videography for Real Estate</p>
+    </header>
 
-  <section class="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery">
-      <img src="https://via.placeholder.com/400x250?text=Drone+Shot+1" alt="Drone Shot 1" />
-      <img src="https://via.placeholder.com/400x250?text=Drone+Shot+2" alt="Drone Shot 2" />
-      <img src="https://via.placeholder.com/400x250?text=Drone+Shot+3" alt="Drone Shot 3" />
-      <img src="https://via.placeholder.com/400x250?text=Drone+Shot+4" alt="Drone Shot 4" />
+    <div class="tabs">
+      <div class="tab active" data-tab="gallery">Gallery</div>
+      <div class="tab" data-tab="services">Services</div>
+      <div class="tab" data-tab="contact">Contact</div>
     </div>
-  </section>
 
-  <section class="services">
-    <h2>Services</h2>
-    <ul>
-      <li>Aerial Drone Photography & Videography</li>
-      <li>Real Estate Property Showcases</li>
-      <li>Editing & Post-Production</li>
-      <li>Custom Video Packages</li>
-    </ul>
-  </section>
+    <section id="gallery" class="tab-content active">
+      <div class="gallery">
+        <img src="https://via.placeholder.com/400x250?text=Drone+Shot+1" alt="Drone Shot 1" />
+        <img src="https://via.placeholder.com/400x250?text=Drone+Shot+2" alt="Drone Shot 2" />
+        <img src="https://via.placeholder.com/400x250?text=Drone+Shot+3" alt="Drone Shot 3" />
+        <img src="https://via.placeholder.com/400x250?text=Drone+Shot+4" alt="Drone Shot 4" />
+      </div>
+    </section>
 
-  <section class="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-    <p>Phone: (555) 123-4567</p>
-    <p>Instagram: <a href="https://instagram.com/yourhandle" target="_blank">@yourhandle</a></p>
-  </section>
+    <section id="services" class="tab-content">
+      <ul>
+        <li>Aerial Drone Photography & Videography</li>
+        <li>Real Estate Property Showcases</li>
+        <li>Editing & Post-Production</li>
+        <li>Custom Video Packages</li>
+      </ul>
+    </section>
 
-  <footer>
-    <p>© 2025 Fodor Studio</p>
-  </footer>
+    <section id="contact" class="tab-content">
+      <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+      <p>Phone: (555) 123-4567</p>
+      <p>Instagram: <a href="https://instagram.com/yourhandle" target="_blank">@yourhandle</a></p>
+    </section>
+
+    <footer>
+      <p>© 2025 Fodor Studio</p>
+    </footer>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active class from all tabs
+        tabs.forEach(t => t.classList.remove('active'));
+        // Hide all content
+        contents.forEach(c => c.classList.remove('active'));
+        // Activate clicked tab
+        tab.classList.add('active');
+        // Show corresponding content
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>
